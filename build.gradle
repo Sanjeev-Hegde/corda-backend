@@ -76,14 +76,39 @@ jar {
 
 task runPartyAServer(type: JavaExec) {
     classpath = sourceSets.main.runtimeClasspath
-    main = 'com.etc.config.ServerConfig'
+    main = 'com.api.config.ServerConfig'
     environment "server.port", "8080"
     environment "config.rpc.port", "10006"
 }
 
 task runPartyBServer(type: JavaExec) {
     classpath = sourceSets.main.runtimeClasspath
-    main = 'com.etc.config.ServerConfig'
+    main = 'com.api.config.ServerConfig'
     environment "server.port", "8081"
     environment "config.rpc.port", "10009"
+}
+
+task deployNodes(type: net.corda.plugins.Cordform, dependsOn: ['jar']) {
+    directory "./build/nodes"
+    networkMap "O=Controller,L=London,C=GB"
+    node {
+        name "O=Controller,L=London,C=GB"
+        advertisedServices = ["corda.notary.validating"]
+        p2pPort 10002
+        rpcPort 10003
+    }
+    node {
+        name "O=PartyA,L=London,C=GB"
+        advertisedServices = []
+        p2pPort 10005
+        rpcPort 10006
+        rpcUsers = [[ user: "user1", "password": "test", "permissions": []]]
+    }
+    node {
+        name "O=PartyB,L=New York,C=US"
+        advertisedServices = []
+        p2pPort 10008
+        rpcPort 10009
+        rpcUsers = [[ user: "user1", "password": "test", "permissions": []]]
+    }
 }

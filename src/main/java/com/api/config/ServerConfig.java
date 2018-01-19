@@ -6,7 +6,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.ComponentScan;
 
 @SpringBootApplication
-@ComponentScan("com.etc")
+@ComponentScan("com.api")
 public class ServerConfig {
 
     public static void main(String[] args) {
