@@ -1,18 +1,18 @@
 package com.api.test;
 
 import com.api.config.NodeRpcConnection;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
 import net.corda.core.identity.Party;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.concurrent.atomic.AtomicLong;
 
-@Controller
+@RestController
 @RequestMapping("/test")
+@Api(value="test", description="Some sample test endpoints")
 public class TestController {
     private static final String template = "Hello, %s!";
     private final AtomicLong counter = new AtomicLong();
@@ -22,12 +22,15 @@ public class TestController {
     public TestController(NodeRpcConnection rpc){
         this.rpc = rpc;
     }
+
+    @ApiOperation(value = "Sample Test endpoint",response = Test.class)
     @RequestMapping(method= RequestMethod.GET)
     public @ResponseBody
     Test sayHello(@RequestParam(value="name", required=false, defaultValue="Stranger") String name) {
         return new Test(counter.incrementAndGet(), String.format(template, name));
     }
 
+    @ApiOperation(value = "Gives node information")
     @RequestMapping(value="/node", method= RequestMethod.GET)
     public @ResponseBody
     ResponseEntity<String> getNodeInfo(@RequestParam(value="name", required=false, defaultValue="Node") String name) {
