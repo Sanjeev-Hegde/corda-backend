@@ -28,7 +28,6 @@ repositories {
 }
 
 group 'etc-backend'
-version '1.0-SNAPSHOT'
 
 apply plugin: 'java'
 apply plugin: 'kotlin'
@@ -59,12 +58,17 @@ dependencies {
 
 
     compile("org.springframework.boot:spring-boot-starter-websocket:$spring_boot_version")
+
    // compile("org.springframework.boot:spring-boot-starter-security:$spring_boot_version")
+
 
     // https://mvnrepository.com/artifact/io.springfox/springfox-swagger2
     compile "io.springfox:springfox-swagger2:2.8.0"
     compile 'io.springfox:springfox-swagger-ui:2.8.0'
 
+    cordapp project(":cordapp")
+    cordapp project(":contract-states")
+    cordapp "net.corda:corda-finance:$corda_release_version"
 
     testCompile "net.corda:corda-node-driver:$corda_release_version"
     testCompile group: 'junit', name: 'junit', version: '4.12'
@@ -103,12 +107,22 @@ task deployNodes(type: net.corda.plugins.Cordform, dependsOn: ['jar']) {
     node {
         name "O=Controller,L=London,C=GB"
         advertisedServices = ["corda.notary.validating"]
+        cordapps = [
+                "$project.group:contract-states:$project.version",
+                "$project.group:cordapp:$project.version",
+                "net.corda:corda-finance:$corda_release_version"
+        ]
         p2pPort 10002
         rpcPort 10003
     }
     node {
         name "O=PartyA,L=London,C=GB"
         advertisedServices = []
+        cordapps = [
+                "etc-backend:contract-states:$project.version",
+                "etc-backend:cordapp:$project.version",
+                "net.corda:corda-finance:$corda_release_version"
+        ]
         p2pPort 10005
         rpcPort 10006
         rpcUsers = [[ user: "user1", "password": "test", "permissions": []]]
@@ -116,6 +130,11 @@ task deployNodes(type: net.corda.plugins.Cordform, dependsOn: ['jar']) {
     node {
         name "O=PartyB,L=New York,C=US"
         advertisedServices = []
+        cordapps = [
+                "$project.group:contract-states:$project.version",
+                "$project.group:cordapp:$project.version",
+                "net.corda:corda-finance:$corda_release_version"
+        ]
         p2pPort 10008
         rpcPort 10009
         rpcUsers = [[ user: "user1", "password": "test", "permissions": []]]

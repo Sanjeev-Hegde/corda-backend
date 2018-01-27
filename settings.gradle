@@ -1,2 +1,3 @@
 rootProject.name = 'corda'
-
+include 'contract-states'
+include 'cordapp'

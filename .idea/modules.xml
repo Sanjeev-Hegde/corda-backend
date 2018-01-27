@@ -2,9 +2,16 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/contract-states.iml" filepath="$PROJECT_DIR$/.idea/modules/contract-states.iml" group="contract-states" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/contract-states/contract-states_main.iml" filepath="$PROJECT_DIR$/.idea/modules/contract-states/contract-states_main.iml" group="contract-states" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/contract-states/contract-states_test.iml" filepath="$PROJECT_DIR$/.idea/modules/contract-states/contract-states_test.iml" group="contract-states" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/corda.iml" filepath="$PROJECT_DIR$/.idea/modules/corda.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/corda_main.iml" filepath="$PROJECT_DIR$/.idea/modules/corda_main.iml" group="corda" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/corda_test.iml" filepath="$PROJECT_DIR$/.idea/modules/corda_test.iml" group="corda" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/cordapp.iml" filepath="$PROJECT_DIR$/.idea/modules/cordapp.iml" group="cordapp" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/cordapp/cordapp_integrationTest.iml" filepath="$PROJECT_DIR$/.idea/modules/cordapp/cordapp_integrationTest.iml" group="cordapp" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/cordapp/cordapp_main.iml" filepath="$PROJECT_DIR$/.idea/modules/cordapp/cordapp_main.iml" group="cordapp" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/cordapp/cordapp_test.iml" filepath="$PROJECT_DIR$/.idea/modules/cordapp/cordapp_test.iml" group="cordapp" />
     </modules>
   </component>
 </project>
