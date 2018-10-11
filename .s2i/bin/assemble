@@ -3,6 +3,7 @@ if [ ! -d /gradle-1.6 ]
 then
 	cd $OPENSHIFT_DATA_DIR
 	mkdir gradle_user
+	mkdir deployments
 	curl -L -O http://services.gradle.org/distributions/gradle-1.6-bin.zip
 	unzip gradle-1.6-bin.zip
 	rm -f gradle-1.6-bin.zip
@@ -12,5 +13,8 @@ then
 	export GRADLE_USER_HOME=/gradle_user
 	export GRADLE_HOME=$OPENSHIFT_DATA_DIR/gradle-1.6
 	export PATH=$GRADLE_HOME/bin:$PATH
-	gradle build
+	cd /tmp/src
+	$GRADLE_HOME/bin/gradle build
+	cd target
+	cp *.jar /deployments
 fi
