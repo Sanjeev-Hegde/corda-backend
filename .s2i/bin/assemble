@@ -1,9 +1,8 @@
 set -x
 if [ ! -d /gradle-1.6 ]
 then
-	cd /tmp/src
+	pwd
 	ls
-	cd /
 	mkdir gradle_user
 	mkdir deployments
 	curl -L -O http://services.gradle.org/distributions/gradle-1.6-bin.zip
