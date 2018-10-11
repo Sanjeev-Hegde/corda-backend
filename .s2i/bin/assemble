@@ -1,22 +1,13 @@
 set -x
-if [ ! -d /gradle-1.6 ]
+if [ ! -d ~/gradle-1.6 ]
 then
-	pwd
-	ls
-	mkdir gradle_user
-	mkdir deployments
 	curl -L -O http://services.gradle.org/distributions/gradle-1.6-bin.zip
 	unzip gradle-1.6-bin.zip
 	rm -f gradle-1.6-bin.zip
 	cd gradle-1.6/bin
 	chmod +x ./gradle
-	#./gradle build
-	#echo SETTING GRADLE HOME
-	#export GRADLE_USER_HOME=/gradle_user
-	#export GRADLE_HOME=$OPENSHIFT_DATA_DIR/gradle-1.6
-	#export PATH=$GRADLE_HOME/bin:$PATH
 	cd /tmp/src
-	./gradle-1.6/bin/gradle build
+	~/gradle-1.6/bin/gradle build
 	cd target
 	cp *.jar /deployments
 fi
