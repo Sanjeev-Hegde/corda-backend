@@ -1,13 +1,13 @@
 set -x
 if [ ! -d ~/gradle-1.6 ]
 then
-	curl -L -O http://services.gradle.org/distributions/gradle-1.6-bin.zip
-	unzip gradle-1.6-bin.zip
-	rm -f gradle-1.6-bin.zip
-	cd gradle-1.6/bin
+	curl -L -O http://services.gradle.org/distributions/gradle-4.10-bin.zip
+	unzip gradle-4.10-bin.zip
+	rm -f gradle-4.10-bin.zip
+	cd gradle-4.10/bin
 	chmod +x ./gradle
 	cd /tmp/src
-	~/gradle-1.6/bin/gradle build
+	~/gradle-4.10/bin/gradle build
 	cd target
 	cp *.jar /deployments
 fi
