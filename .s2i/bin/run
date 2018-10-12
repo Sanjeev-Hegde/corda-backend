@@ -1,1 +1,2 @@
-
+  cd /tmp/src
+	~/gradle-4.10/bin/gradle build
