@@ -6,4 +6,8 @@ then
 	rm -f gradle-4.10-bin.zip
 	cd gradle-4.10/bin
 	chmod +x ./gradle
+	cd /tmp/src
+	~/gradle-4.10/bin/gradle build
+	cd target
+	cp *.jar /deployments
 fi
