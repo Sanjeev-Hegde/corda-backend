@@ -11,18 +11,6 @@ apply plugin: 'net.corda.plugins.cordapp'
 apply plugin: 'net.corda.plugins.cordformation'
 apply plugin: 'net.corda.plugins.quasar-utils'
 
-//sourceSets {
-//    main {
-//        resources {
-//            srcDir "../config/dev"
-//        }
-//    }
-//    test {
-//        resources {
-//            srcDir "../config/test"
-//        }
-//    }
-//}
 
 dependencies {
     compile "org.jetbrains.kotlin:kotlin-stdlib-jre8:$kotlin_version"
@@ -42,13 +30,6 @@ dependencies {
 
     // CorDapp dependencies
 
-}
-
-compileKotlin {
-    kotlinOptions.jvmTarget = "1.8"
-}
-compileTestKotlin {
-    kotlinOptions.jvmTarget = "1.8"
 }
 
 tasks.withType(org.jetbrains.kotlin.gradle.tasks.KotlinCompile).all {
