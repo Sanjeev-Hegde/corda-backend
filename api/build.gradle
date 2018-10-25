@@ -224,20 +224,18 @@ task wrapper(type: Wrapper) {
 task stage(dependsOn: 'bootRepackage') {
 }
 
-task runPartyAServer(type: JavaExec) {
+task runGBISServer(type: JavaExec) {
     classpath = sourceSets.main.runtimeClasspath
     main = 'com.corda.backend.ServerApp'
     environment "server.port", "8080"
     environment "spring.profiles.active","gbis"
-    //add in yml environment "config.rpc.port", "10009"
 }
 
-task runPartyBServer(type: JavaExec) {
+task runIBFSer(type: JavaExec) {
     classpath = sourceSets.main.runtimeClasspath
     main = 'com.corda.backend.ServerApp'
     environment "server.port", "8081"
     environment "spring.profiles.active","ibfs"
-    //add in yml environment "config.rpc.port", "10009"
 }
 
 compileJava.dependsOn processResources
