@@ -2,15 +2,12 @@
 <project version="4">
   <component name="CompilerConfiguration">
     <bytecodeTargetLevel>
-      <module name="contract-states_main" target="1.8" />
-      <module name="contract-states_test" target="1.8" />
-      <module name="corda_main" target="1.8" />
-      <module name="corda_test" target="1.8" />
-      <module name="cordapp_integrationTest" target="1.8" />
+      <module name="api_main" target="1.8" />
+      <module name="api_test" target="1.8" />
+      <module name="corda-backend_main" target="1.8" />
+      <module name="corda-backend_test" target="1.8" />
       <module name="cordapp_main" target="1.8" />
       <module name="cordapp_test" target="1.8" />
-      <module name="web-api_main" target="1.8" />
-      <module name="web-api_test" target="1.8" />
     </bytecodeTargetLevel>
   </component>
 </project>
