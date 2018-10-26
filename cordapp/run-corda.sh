@@ -1,7 +1,7 @@
 #!/bin/sh
 
 # If variable not present use default values
-: ${CORDA_HOME:=/opt/corda/src/build/nodes/${NODE_NAME}}
+: ${CORDA_HOME:=/opt/corda/src/cordapp/build/nodes/${NODE_NAME}}
 : ${JAVA_OPTIONS:=-Xmx512m}
 
 export CORDA_HOME JAVA_OPTIONS
@@ -14,5 +14,5 @@ if [ $NODE_NAME = "Notary" ]
 then
    java $JAVA_OPTIONS -jar corda.jar
 else
-   java $JAVA_OPTIONS -jar corda.jar & java $JAVA_OPTIONS -jar corda-webserver.jar
+   nohup java $JAVA_OPTIONS -jar corda.jar & java $JAVA_OPTIONS -jar corda-webserver.jar
 fi
