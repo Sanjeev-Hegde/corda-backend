@@ -2,6 +2,7 @@ package com.corda.backend.web.rest;
 
 import com.corda.backend.config.Constants;
 import com.codahale.metrics.annotation.Timed;
+import com.corda.backend.config.CordaServiceConfiguration;
 import com.corda.backend.repository.UserRepository;
 import com.corda.backend.security.AuthoritiesConstants;
 import com.corda.backend.service.UserService;
@@ -54,6 +55,9 @@ public class UserResource {
 
     private final UserService userService;
 
+    @Autowired
+    private CordaServiceConfiguration cordaServiceConfiguration;
+
     public UserResource(UserRepository userRepository, UserService userService) {
 
         this.userRepository = userRepository;
@@ -100,4 +104,14 @@ public class UserResource {
     }
 
 
+    /**
+     * GET /cordahostandport : get all users.
+     *
+     * @return the ResponseEntity with status 200 (OK) and with body all users
+     */
+    @GetMapping("/cordahostandport")
+    @Timed
+    public String getCordaHostAndPort() {
+        return  cordaServiceConfiguration.getNodeServiceAddress();
+    }
 }

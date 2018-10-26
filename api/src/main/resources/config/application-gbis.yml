@@ -13,6 +13,12 @@
 # http://docs.spring.io/spring-boot/docs/current/reference/html/common-application-properties.html
 # ===================================================================
 
+#hoste name and rpc port of GBIS corda node
+corda:
+    service:
+        host: localhost
+        port: 10006
+
 security:
     basic:
         enabled: false

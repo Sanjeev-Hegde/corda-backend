@@ -15,8 +15,8 @@
 
 corda:
     service:
-        host: localhost
-        port: 10009
+        host: corda-node-ibfs.corda-oc.svc
+        port: 10003
 security:
     basic:
         enabled: false
