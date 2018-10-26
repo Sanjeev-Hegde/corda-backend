@@ -33,7 +33,7 @@ RUN  chown -R corda:corda /opt/corda
 #ADD --chown=corda:corda https://dl.bintray.com/r3/corda/net/corda/corda-webserver/${CORDA_VERSION}/corda-webserver-${CORDA_VERSION}.jar   /opt/corda/corda-webserver.jar
 
 
-COPY run-corda.sh /run-corda.sh
+COPY ./run-corda.sh /run-corda.sh
 COPY ../ /opt/corda/src
 RUN cd /opt/corda/src && \
     sync && \
