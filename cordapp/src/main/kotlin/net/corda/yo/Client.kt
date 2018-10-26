@@ -21,13 +21,13 @@ private class YoRPC {
         // Can be amended in the com.template.MainKt file.
         val proxy = client.start("user1", "test").proxy
         // Grab all signed transactions and all future signed transactions.
-        val (transactions, futureTransactions) = proxy.internalVerifiedTransactionsFeed()
+    //    val (transactions, futureTransactions) = proxy.in
         // Log the existing Yo's and listen for new ones.
-        futureTransactions.startWith(transactions).toBlocking().subscribe { transaction ->
-            transaction.tx.outputs.forEach { output ->
-                val state = output.data as YoState
-                logger.info(state.toString())
-            }
-        }
+//        futureTransactions.startWith(transactions).toBlocking().subscribe { transaction ->
+//            transaction.tx.outputs.forEach { output ->
+//                val state = output.data as YoState
+//                logger.info(state.toString())
+//            }
+//        }
     }
 }
