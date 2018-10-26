@@ -12,13 +12,6 @@ RUN apk add bash iputils && \
     # Create /opt/corda directory && \
     mkdir -p /opt/app/src
 
-#RUN apk add screen
-
-# Copy corda jar
-ADD  https://dl.bintray.com/r3/corda/net/corda/corda/${CORDA_VERSION}/corda-${CORDA_VERSION}.jar                       /opt/corda/corda.jar
-RUN  chown -R corda:corda /opt/corda
-#ADD --chown=corda:corda https://dl.bintray.com/r3/corda/net/corda/corda-webserver/${CORDA_VERSION}/corda-webserver-${CORDA_VERSION}.jar   /opt/corda/corda-webserver.jar
-
 
 COPY ./api/run-backend.sh /run-backend.sh
 COPY ./ /opt/app/src
