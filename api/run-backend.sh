@@ -1,10 +1,10 @@
 #!/bin/sh
 
 # If variable not present use default values
-: ${APP_HOME:=/opt/app/src/build/libs/}}
+: ${APP_HOME:=/opt/app/src/api/build/libs/}}
 : ${JAVA_OPTIONS:=-Xmx512m}
 
-export CORDA_HOME JAVA_OPTIONS
+export APP_HOME JAVA_OPTIONS
 
 cd ${APP_HOME}
 

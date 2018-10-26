@@ -20,12 +20,12 @@ RUN  chown -R corda:corda /opt/corda
 #ADD --chown=corda:corda https://dl.bintray.com/r3/corda/net/corda/corda-webserver/${CORDA_VERSION}/corda-webserver-${CORDA_VERSION}.jar   /opt/corda/corda-webserver.jar
 
 
-COPY ./run-backend.sh /run-backend.sh
-COPY ../ /opt/app/src
+COPY ./api/run-backend.sh /run-backend.sh
+COPY ./ /opt/app/src
 RUN cd /opt/app/src && \
     sync && \
     chmod +x gradlew && \
-   ./gradlew -Dhttp.proxyHost=webproxy.prd.lab-nxtit.priv -Dhttp.proxyPort=3128 -Dhttps.proxyHost=webproxy.prd.lab-nxtit.priv -Dhttps.proxyPort=3128 api:build && \
+   ./gradlew -Dhttp.proxyHost=webproxy.prd.lab-nxtit.priv -Dhttp.proxyPort=3128 -Dhttps.proxyHost=webproxy.prd.lab-nxtit.priv -Dhttps.proxyPort=3128 -x test api:build && \
  #  ./gradlew  deployNodesUAT && \
    sync
 

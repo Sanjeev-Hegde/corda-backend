@@ -14,26 +14,27 @@
 # ===================================================================
 
 #hoste name and rpc port of GBIS corda node
+# corda-node-gbis.corda-oc.svc
 corda:
     service:
-        host: corda-node-gbis.corda-oc.svc
-        port: 10003
+        host: ${NODE_HOSTNAME}
+        port: ${NODE_PORT}
 
 security:
     basic:
         enabled: false
     oauth2:
         client:
-            access-token-uri: http://localhost:9080/auth/realms/gbis/protocol/openid-connect/token
-            user-authorization-uri: http://localhost:9080/auth/realms/gbis/protocol/openid-connect/auth
+            access-token-uri: http://localhost:9080/auth/realms/${ENTITY_NAME}/protocol/openid-connect/token
+            user-authorization-uri: http://localhost:9080/auth/realms/${ENTITY_NAME}/protocol/openid-connect/auth
             client-id: web_app
             client-secret: web_app
             client-authentication-scheme: form
             scope: openid profile email
         resource:
             filter-order: 3
-            user-info-uri: http://localhost:9080/auth/realms/gbis/protocol/openid-connect/userinfo
-            token-info-uri: http://localhost:9080/auth/realms/gbis/protocol/openid-connect/token/introspect
+            user-info-uri: http://localhost:9080/auth/realms/${ENTITY_NAME}/protocol/openid-connect/userinfo
+            token-info-uri: http://localhost:9080/auth/realms/${ENTITY_NAME}/protocol/openid-connect/token/introspect
             prefer-token-info: false
 logging:
     level:
@@ -54,9 +55,9 @@ spring:
         serialization.indent_output: true
     datasource:
         type: com.zaxxer.hikari.HikariDataSource
-        url: jdbc:postgresql://localhost:5432/gbis
-        username: gbis
-        password:
+        url: jdbc:postgresql://${DATABASE_SERVICE_NAME}:5432/${ENTITY_NAME}
+        username: ${POSTGRESQL_USER}
+        password: ${POSTGRESQL_PASSWORD}
     jpa:
         database-platform: io.github.jhipster.domain.util.FixedPostgreSQL82Dialect
         database: POSTGRESQL
