@@ -1,0 +1,3 @@
+rootProject.name = 'corda-backend'
+include 'cordapp'
+include 'api'
